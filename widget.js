@@ -1,3 +1,6 @@
 $(document).ready(function() {
-  console.log("Ready!")
+  $('#input').keyup(function() {
+    console.log("Keyup is working!")
+
+  })
 });
