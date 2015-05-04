@@ -1,44 +1,44 @@
-var widget = function(src, dest) {
-   var controller = new widget.Controller();
-   var sourceView = new widget.SourceView(src, controller);
-   controller.destination = new widget.DestView(dest);
+var Widget = function(src, dest) {
+   var controller = new Widget.Controller();
+   var sourceView = new Widget.SourceView(src, controller);
+   controller.destination = new Widget.DestView(dest);
 };
 
-widget.model = {
+Widget.Model = {
   convert: function(textInput) {
     return markdown.toHTML(textInput);
   }
 };
 
-widget.SourceView = function(selector, controller) {
-  this.$inputElement = $(selector);
+Widget.SourceView = function(inputId, controller) {
+  this.inputElement = document.getElementById(inputId);
   this.controller = controller;
-
-  this.$inputElement.on('keyup', function(event) {
-    this.notifyTheController(this.$inputElement.val());
+  this.inputElement.addEventListener('keyup', function(event) {
+    this.notifyOfTextChange(this.inputElement.value);
   }.bind(this));
 };
 
-widget.SourceView.prototype.notifyTheController = function(event) {
-   this.controller.notifyKeyUp(event);
+Widget.SourceView.prototype.notifyOfTextChange = function(inputText) {
+   this.controller.notifyKeyUp(inputText);
 };
 
-widget.DestView = function(selector) {
-   this.$selector = $(selector);   
+Widget.DestView = function(viewId) {
+   this.element = document.getElementById(viewId);
 };
 
-widget.DestView.prototype.produceOutput = function(markdown) {
-  this.$selector.html(markdown);
+Widget.DestView.prototype.produceOutput = function(html) {
+  this.element.innerHTML = html;
 };
 
-widget.Controller = function() {
+Widget.Controller = function() {
 };
 
-widget.Controller.prototype.notifyKeyUp = function(inputText) {
-  var markdown = widget.model.convert(inputText);
-  this.destination.produceOutput(markdown); 
+Widget.Controller.prototype.notifyKeyUp = function(inputText) {
+  var output = Widget.Model.convert(inputText);
+  this.destination.produceOutput(output); 
 };
 
-$(document).ready(function(){
-  widget("#source-id", "#preview-div");
+// Setup
+document.addEventListener("DOMContentLoaded", function(event) { 
+  Widget("source-id", "preview-div");
 });
