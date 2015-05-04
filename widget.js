@@ -1,5 +1,7 @@
 $(document).ready(function() {
   $('#input').keyup(function(event) {
-    $('#output').text($('#input').val());
+    var inputHTML = markdown.toHTML($('#input').val());
+    console.log(inputHTML);
+    // $('#output').text
   })
 });
