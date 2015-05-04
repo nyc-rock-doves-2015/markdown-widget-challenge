@@ -1,62 +1,30 @@
-# Markdown Widget Challenge
+> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
 
-## Learning Competencies
+### Purpose
+The Sinatra Skeleton:
 
-* Use basic JavaScript - functions, control structures, scope
-* Build a pure JavaScript application
-* Build a pure JavaScript class
-* Write OO JavaScript
+1. Provides a foundation for building challenges or creating a new Sinatra application.
+2. Demonstrates a reasonable set of practices around building Sinatra applications.
+3. Eases the transition to Rails for Dev Bootcamp students
 
-## Summary
+### Quickstart
 
-The goal will be to create a "live" markdown preview widget in JavaScript.
-When a user enters Markdown *text* inside a text area, the _rendered_ version
-is displayed elsewhere on the page.
+1.  `bundle install`
+2.  `shotgun config.ru`
 
-The goal is to use object-oriented JavaScript to construct a widget.  Ideally
-you should be able to issue the command:
+As needed, create models & migrations with the `rake` tasks:
 
-    MarkdownWidget("#source-id", "#preview-div")
-    
-Your goal in this challenge **is not** to write a Markdown parser (although that is certainly worth a stretch!) the goal is to produce an MVC architecture in a language _that has no inherent patterns on how to build one_!
+```
+rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
+rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
+```
 
-## Releases
+### Contributing
 
-### Release -1
+We would love for you to help make the skeleton more awesome, There are three ways to contribute:
 
-Your instructor may want you to try a simple implementation that _does not_ adhere to MVC principles.  It may be the instructors design built on the techniques you already know.  See if you should follow this path or if you should move directly to the MVC-based implementation.
+1. Ask for a bug fix or enhancement!
+2. Submit a pull request for a bug fix or enhancement!
+3. Code review an open pull request!
 
-### Release 0
-
-Set up an object-oriented architecture (possibly [Model View Controller][MVC]
-or [Model View Presenter][MVP]) that performs a "[identity transformation][identity]" based on the "keyup" event.  That is, return the
-markdown text as the preview text.
-
-### Release 1
-
-Introduce the Markdown converter.  You need not implement the _full_
-specification, but you should support `*`, `_`, and `**` for italics, italics,
-and bold, respectively.
-
-### Release 2
-
-Swap out the transformation logic from *your* implementation to one provided by
-a third party e.g. [markdown-js]
-
-## Optimize your learning
-
-Notice that sometimes it's helpful to delay the building of the algorithm until
-later.  An identity transformation confirms that the flow works, but doesn't
-hang your development process in the research of specifics.
-
-## Resources
-
-* [MVC][]
-* [MVP][]
-* [Identity transformation][identity]
-* [markdown-js][]
-
-[MVC]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
-[MVP]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
-[identity]: http://en.wikipedia.org/wiki/Identity_transform
-[markdown-js]: https://github.com/evilstreak/markdown-js
+Be prepared to give and receive specific, actionable, and kind feedback!
