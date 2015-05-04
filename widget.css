@@ -1,0 +1,11 @@
+div {
+  height: 200px;
+  width: 400px;
+  border: 4px mediumseagreen solid;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 200px;
+  width: 400px;
+}
