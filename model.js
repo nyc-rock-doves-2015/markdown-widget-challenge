@@ -1,9 +1,9 @@
 MarkdownWidget = function(input, preview) {
-  this.input = input
+  this.input = input;
   this.update = function () {
-        preview.innerHTML = this.parse();
-        this.update();
+        preview.innerHTML = markdown.toHTML(input.value);
     }
+  this.update();
 }
 
 MarkdownWidget.prototype.italicize = function() {
@@ -12,7 +12,7 @@ MarkdownWidget.prototype.italicize = function() {
   for (var i = 0; i < this.input.length; i++) {
     if (this.input[i] != "*") {
       output += this.input[i]
-    } else if count === 0 {
+    } else if (count === 0) {
       output += "<i>"
       count += 1
     } else {
@@ -28,7 +28,7 @@ MarkdownWidget.prototype.bold = function() {
   for (var i = 0; i < this.input.length; i++) {
     if (this.input[i] != "*") {
       output += this.input[i]
-    } else if (count === 0) && (this.input[i+1] === "*"){
+    } else if (count === 0 && this.input[i+1] === "*"){
       output += "<b>"
       count += 1
       i += 1
@@ -42,9 +42,9 @@ MarkdownWidget.prototype.bold = function() {
 
 MarkdownWidget.prototype.parse = function() {
   for (var i = 0; i < this.input.length; i++) {
-    if (this.input[i] === "*") && (this.input[i+1] != "*" {
+    if (this.input[i] === "*" && this.input[i+1] != "*") {
       this.italicize();
-    } else if (this.input[i] === "*") && (this.input[i+1] === "*") {
+    } else if (this.input[i] === "*" && this.input[i+1] === "*") {
       this.bold();
     }
   }
