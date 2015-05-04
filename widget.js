@@ -1,5 +1,8 @@
 $(function (){
-  $('.input').keyup(function (event) {
-    $('.output').html($('.input').val());
+
+  var $input = $('.input')
+
+  $input.keyup(function () {
+    $('.output').html(markdown.toHTML($input.val()));
   });
 });
